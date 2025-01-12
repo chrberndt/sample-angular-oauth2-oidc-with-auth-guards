@@ -86,6 +86,27 @@ Here are some potential starting points you could consider:
 
 Feel free to open an issue and PR if you want to add additional pieces of guidance to this section.
 
+
+### Keycloak
+
+1. Configure Keycloak to run on http://localhost:8180
+  ```yaml
+  services:
+    keycloak:
+      image: keycloak/keycloak:26.0.7-0
+      container_name: keycloak
+      environment:
+        KEYCLOAK_ADMIN: admin
+        KEYCLOAK_ADMIN_PASSWORD: admin
+      command: start-dev
+      ports:
+        - "8180:8080"
+  ```
+2. Login in to Keycloak with `admin:admin`
+3. Create a new `quickstart` realm from https://github.com/keycloak/keycloak-quickstarts/tree/main/js/spa/config/realm-import.json
+4. Go to *Clients → spa* and add `http://localhost:4200/*` as *Valid redirect URI* and `http://localhost:4200` to *Web Origins*
+5. Launch `sample-angular-oauth2-oidc-with-auth-guards` and login with `alice:alice`
+
 ## Example
 
 The application is supposed to look somewhat like this:
