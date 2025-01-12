@@ -1,12 +1,12 @@
 import { AuthConfig } from 'angular-oauth2-oidc';
 
 export const authConfig: AuthConfig = {
-  issuer: 'https://demo.duendesoftware.com',
-  clientId: 'interactive.public', // The "Auth Code + PKCE" client
+  issuer: 'http://localhost:8180/realms/quickstart',
+  clientId: 'spa', // The "Auth Code + PKCE" client
   responseType: 'code',
   redirectUri: window.location.origin + '/',
   silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
-  scope: 'openid profile email api', // Ask offline_access to support refresh token refreshes
+  scope: 'openid profile email', // Ask offline_access to support refresh token refreshes
   useSilentRefresh: true, // Needed for Code Flow to suggest using iframe-based refreshes
   silentRefreshTimeout: 5000, // For faster testing
   timeoutFactor: 0.25, // For faster testing
